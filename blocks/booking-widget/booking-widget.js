@@ -142,10 +142,9 @@ export default function decorate(block) {
 
   const searchBtn = el('button', 'booking-widget-search');
   searchBtn.type = 'button';
-  searchBtn.setAttribute('aria-label', searchLabel);
-  const arrow = el('span', 'booking-widget-search-icon');
-  arrow.setAttribute('aria-hidden', 'true');
-  searchBtn.append(arrow);
+  const searchText = /^search$/i.test(searchLabel) ? 'Search flights' : searchLabel;
+  searchBtn.setAttribute('aria-label', searchText);
+  searchBtn.append(el('span', 'booking-widget-search-label', searchText));
   fieldsRow.append(searchBtn);
 
   // --- Options row ----------------------------------------------------------

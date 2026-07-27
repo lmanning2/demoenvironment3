@@ -1,10 +1,14 @@
-/* Booking Widget — static Nile Air / Qatar-style flight-search bar. */
+/* Booking Widget — static Nile Air flight-search card, Qatar-style.
+   Sits below the hero as a rounded white card: a light-grey tab strip on top,
+   a white body with the search fields, and a gold pill "Search flights" button. */
 
 .booking-widget {
   box-sizing: border-box;
-  background-color: var(--brand-navy);
-  color: #fff;
-  padding: 28px 20px;
+  background-color: #fff;
+  color: var(--text-color);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 18px 50px rgb(22 40 68 / 12%);
   font-family: var(--body-font-family);
 }
 
@@ -12,44 +16,55 @@
   box-sizing: border-box;
 }
 
-/* Full-width dark band: break out of the section content max-width. */
+/* Pull the card up so it overlaps the bottom of the hero, and constrain
+   it to the content width centred in the section. */
 .section .booking-widget-wrapper {
-  max-width: 100% !important;
-  padding: 0 !important;
+  max-width: var(--content-max-width) !important;
+  margin: -64px auto 0 !important;
+  padding: 0 24px !important;
+  position: relative;
+  z-index: 2;
 }
 
-/* --- Tabs ----------------------------------------------------------------- */
+/* --- Tabs (light-grey strip across the top) ------------------------------- */
 .booking-widget .booking-widget-tabs {
   display: flex;
   flex-wrap: wrap;
-  gap: 28px;
-  margin-bottom: 22px;
+  gap: 0;
+  background-color: var(--brand-grey);
+  padding: 0 8px;
 }
 
 .booking-widget .booking-widget-tab {
   appearance: none;
   border: 0;
-  border-bottom: 2px solid transparent;
+  border-bottom: 3px solid transparent;
   background: transparent;
-  color: rgb(255 255 255 / 20%);
+  color: var(--muted-color);
   font-family: var(--heading-font-family);
-  font-size: 20px;
-  font-weight: 500;
-  padding: 6px 4px;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 20px 24px;
   cursor: pointer;
   line-height: 1.2;
 }
 
-.booking-widget .booking-widget-tab.is-active {
-  color: #fff;
-  border-bottom-color: var(--brand-gold);
+.booking-widget .booking-widget-tab:first-child {
+  background-color: #fff;
 }
 
-/* --- Search panel --------------------------------------------------------- */
+.booking-widget .booking-widget-tab.is-active {
+  color: var(--brand-navy);
+  border-bottom-color: var(--brand-gold);
+  background-color: #fff;
+}
+
+/* --- Search panel (white body) -------------------------------------------- */
 .booking-widget .booking-widget-panel {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 22px;
+  padding: 28px 24px;
 }
 
 .booking-widget .booking-widget-fields {
@@ -63,6 +78,7 @@
   display: flex;
   align-items: center;
   gap: 18px;
+  flex: 1 1 auto;
 }
 
 /* Labelled field: large value on top, small label beneath. */
@@ -71,12 +87,12 @@
   flex-direction: column;
   gap: 2px;
   min-width: 0;
-  padding-bottom: 6px;
-  border-bottom: 1px solid rgb(255 255 255 / 35%);
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgb(22 40 68 / 20%);
 }
 
 .booking-widget .booking-widget-field-value {
-  color: #fff;
+  color: var(--brand-navy);
   font-size: 20px;
   font-weight: 500;
   line-height: 1.2;
@@ -85,7 +101,7 @@
 
 .booking-widget .booking-widget-field-label {
   order: 2;
-  color: rgb(255 255 255 / 70%);
+  color: var(--muted-color);
   font-size: 13px;
   font-weight: 400;
   line-height: 1.2;
@@ -95,10 +111,11 @@
 .booking-widget .booking-widget-airport {
   border-bottom: 0;
   padding-bottom: 0;
+  flex: 1 1 0;
 }
 
 .booking-widget .booking-widget-airport .booking-widget-field-value {
-  font-size: 34px;
+  font-size: 30px;
   font-weight: 600;
 }
 
@@ -115,8 +132,8 @@
   top: 8px;
   width: 8px;
   height: 8px;
-  border-right: 2px solid rgb(255 255 255 / 80%);
-  border-bottom: 2px solid rgb(255 255 255 / 80%);
+  border-right: 2px solid var(--muted-color);
+  border-bottom: 2px solid var(--muted-color);
   transform: rotate(45deg);
 }
 
@@ -135,49 +152,31 @@
   left: 0;
   right: 0;
   height: 1px;
-  background-color: rgb(255 255 255 / 80%);
+  background-color: var(--muted-color);
 }
 
 .booking-widget .booking-widget-swap::before { top: 6px; }
 .booking-widget .booking-widget-swap::after { top: 10px; }
 
-/* --- Search button (gold circle with arrow) ------------------------------ */
+/* --- Search button (gold pill) -------------------------------------------- */
 .booking-widget .booking-widget-search {
   appearance: none;
   border: 0;
   background-color: var(--brand-gold);
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  border-radius: 30px;
+  padding: 16px 34px;
   flex: 0 0 auto;
   margin-left: auto;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  color: #fff;
+  font-family: var(--heading-font-family);
+  font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
+  line-height: 1.2;
 }
 
 .booking-widget .booking-widget-search:hover {
   background-color: var(--brand-gold-dark);
-}
-
-.booking-widget .booking-widget-search-icon {
-  position: relative;
-  width: 22px;
-  height: 2px;
-  background-color: var(--brand-navy);
-}
-
-.booking-widget .booking-widget-search-icon::after {
-  content: '';
-  position: absolute;
-  right: -1px;
-  top: -4px;
-  width: 10px;
-  height: 10px;
-  border-top: 2px solid var(--brand-navy);
-  border-right: 2px solid var(--brand-navy);
-  transform: rotate(45deg);
 }
 
 /* --- Options row ---------------------------------------------------------- */
@@ -190,7 +189,7 @@
 .booking-widget .booking-widget-options-title {
   font-size: 14px;
   font-weight: 500;
-  color: #fff;
+  color: var(--muted-color);
 }
 
 .booking-widget .booking-widget-option-toggle {
@@ -198,31 +197,21 @@
   align-items: center;
   gap: 10px;
   font-size: 14px;
-  color: rgb(255 255 255 / 85%);
+  color: var(--brand-navy);
   cursor: pointer;
 }
 
 .booking-widget .booking-widget-checkbox {
   width: 16px;
   height: 16px;
-  border: 1px solid rgb(255 255 255 / 60%);
+  border: 1px solid rgb(22 40 68 / 45%);
   border-radius: 2px;
   flex: 0 0 auto;
 }
 
 /* --- Responsive ----------------------------------------------------------- */
 @media (width >= 900px) {
-  .booking-widget {
-    padding: 45px 40px;
-  }
-
   .booking-widget .booking-widget-fields {
     flex-wrap: nowrap;
-  }
-}
-
-@media (width >= 1200px) {
-  .booking-widget {
-    padding: 45px calc((100% - var(--content-max-width)) / 2 + 32px);
   }
 }
