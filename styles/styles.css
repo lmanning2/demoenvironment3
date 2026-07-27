@@ -10,34 +10,36 @@
  * governing permissions and limitations under the License.
  */
 
+@import url('brand.css');
+
 :root {
-  /* colors */
-  --background-color: white;
-  --light-color: #f8f8f8;
-  --dark-color: #505050;
-  --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
+  /* colors — Nile Air brand */
+  --background-color: #fff;
+  --light-color: #f6f7f9;
+  --dark-color: #162844;
+  --text-color: #162844;
+  --link-color: #162844;
+  --link-hover-color: #c3ae7c;
 
   /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  --body-font-family: "Poppins", -apple-system, roboto, sans-serif;
+  --heading-font-family: "Poppins", -apple-system, roboto, sans-serif;
 
   /* body sizes */
-  --body-font-size-m: 22px;
-  --body-font-size-s: 19px;
-  --body-font-size-xs: 17px;
+  --body-font-size-m: 18px;
+  --body-font-size-s: 16px;
+  --body-font-size-xs: 14px;
 
   /* heading sizes */
-  --heading-font-size-xxl: 55px;
-  --heading-font-size-xl: 44px;
-  --heading-font-size-l: 34px;
-  --heading-font-size-m: 27px;
-  --heading-font-size-s: 24px;
-  --heading-font-size-xs: 22px;
+  --heading-font-size-xxl: 36px;
+  --heading-font-size-xl: 30px;
+  --heading-font-size-l: 24px;
+  --heading-font-size-m: 20px;
+  --heading-font-size-s: 18px;
+  --heading-font-size-xs: 16px;
 
   /* nav height */
-  --nav-height: 64px;
+  --nav-height: 72px;
 }
 
 /* fallback fonts */
@@ -61,10 +63,10 @@
     --body-font-size-xs: 14px;
 
     /* heading sizes */
-    --heading-font-size-xxl: 45px;
-    --heading-font-size-xl: 36px;
-    --heading-font-size-l: 28px;
-    --heading-font-size-m: 22px;
+    --heading-font-size-xxl: 54px;
+    --heading-font-size-xl: 44px;
+    --heading-font-size-l: 32px;
+    --heading-font-size-m: 24px;
     --heading-font-size-s: 20px;
     --heading-font-size-xs: 18px;
   }
@@ -107,8 +109,9 @@ h6 {
   margin-top: 0.8em;
   margin-bottom: 0.25em;
   font-family: var(--heading-font-family);
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.25;
+  color: var(--heading-color, var(--text-color));
   scroll-margin: 40px;
 }
 
@@ -199,18 +202,19 @@ button.button:disabled {
 
 a.button.primary,
 button.button.primary {
-  border-color: var(--text-color);
-  background-color: var(--text-color);
-  color: var(--background-color);
+  border-color: var(--brand-gold);
+  background-color: var(--brand-gold);
+  border-radius: 10px;
+  color: #fff;
 }
 
 a.button.primary:hover,
 a.button.primary:focus-visible,
 button.button.primary:hover,
 button.button.primary:focus-visible {
-  border-color: var(--dark-color);
-  background-color: var(--dark-color);
-  color: var(--light-color);
+  border-color: var(--brand-gold-dark);
+  background-color: var(--brand-gold-dark);
+  color: #fff;
 }
 
 a.button.primary[aria-disabled="true"],
@@ -318,8 +322,29 @@ main > .section:first-of-type {
 
 /* section metadata */
 main .section.light,
-main .section.highlight {
+main .section.highlight,
+main .section.grey {
   background-color: var(--light-color);
   margin: 0;
-  padding: 40px 0;
+  padding: 48px 0;
+}
+
+main .section.dark {
+  background-color: var(--brand-navy);
+  color: #fff;
+  margin: 0;
+  padding: 56px 0;
+}
+
+main .section.dark h1,
+main .section.dark h2,
+main .section.dark h3,
+main .section.dark h4,
+main .section.dark h5,
+main .section.dark h6 {
+  color: #fff;
+}
+
+main .section.dark a:any-link {
+  color: var(--brand-gold);
 }

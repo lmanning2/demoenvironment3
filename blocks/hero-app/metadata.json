@@ -1,0 +1,39 @@
+{
+  "variantName": "hero-app",
+  "baseBlock": "hero",
+  "version": "1.0.0",
+  "created": "2026-07-27T06:39:32.188Z",
+  "sourceContext": {
+    "originUrl": "https://www.nileair.com/",
+    "originPage": "Nile Air home page",
+    "blockPosition": "bottom"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "wide",
+    "purpose": "cta",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "background image + eyebrow + heading + app-store badge links",
+    "buttonCount": 2,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "app download CTA bands",
+      "full-width promo CTA sections with background image"
+    ],
+    "notSuitableFor": [
+      "text-only heros",
+      "carousels"
+    ]
+  },
+  "usage": {
+    "pagesUsing": [
+      "/"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-07-27T06:39:32.188Z"
+  }
+}

@@ -1,0 +1,231 @@
+/* Block: carousel-fares
+ * Qatar-Airways-style "fare deals" horizontal card strip.
+ * Multiple cards per view (NOT full-bleed like carousel-hero).
+ * Visual values extracted from nileair.com #layout-content > div.promotions_area
+ * computed styles; colors/fonts mapped to brand tokens in styles/brand.css.
+ *
+ * Source card (.sing_promt): bg #f6f7f9, border-radius 25px, photo top with
+ * rounded top corners, content padding 30px. Route h3 24px/700, price 24px/700,
+ * arrows 50x50 white radius 15px navy glyph.
+ */
+
+.carousel-fares {
+  position: relative;
+}
+
+.carousel-fares .carousel-fares-slides-container {
+  position: relative;
+}
+
+.carousel-fares .carousel-fares-slides,
+.carousel-fares .carousel-fares-slide-indicators {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- Horizontal scrolling strip of multiple cards --- */
+.carousel-fares .carousel-fares-slides {
+  display: flex;
+  gap: 24px;
+  padding: 8px 4px 12px; /* room for card edge / shadow */
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  overflow: scroll clip;
+}
+
+.carousel-fares .carousel-fares-slides::-webkit-scrollbar {
+  display: none;
+}
+
+/* --- Card (li) ---
+   Multi-card: ~1.4 cards on mobile so users know it scrolls.
+   Scoped tightly to .carousel-fares so it never inherits the
+   full-bleed 100% sizing used by carousel-hero. */
+.carousel-fares .carousel-fares-slide {
+  position: relative;
+  flex: 0 0 72%;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: var(--brand-grey);
+  border-radius: 25px;
+}
+
+/* --- Card photo (top, rounded top corners inherited from card overflow) --- */
+.carousel-fares .carousel-fares-slide-image {
+  margin: 0;
+  display: block;
+  line-height: 0;
+}
+
+.carousel-fares .carousel-fares-slide-image picture,
+.carousel-fares .carousel-fares-slide-image img {
+  display: block;
+  width: 100%;
+}
+
+.carousel-fares .carousel-fares-slide-image img {
+  aspect-ratio: 256 / 274; /* source image 256.5 x 274.3 */
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* --- Card content --- */
+.carousel-fares .carousel-fares-slide-content {
+  padding: 24px;
+  text-align: left;
+}
+
+/* Route heading */
+.carousel-fares .carousel-fares-slide-content h3 {
+  margin: 0 0 5px;
+  font-family: var(--heading-font-family);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+  color: var(--muted-color);
+}
+
+/* Price — strong emphasis in brand navy (design intent) */
+.carousel-fares .carousel-fares-slide-content p {
+  margin: 0;
+  font-family: var(--body-font-family);
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.2;
+  color: var(--brand-navy);
+}
+
+/* Fare label — muted lead-in above the price */
+.carousel-fares .carousel-fares-slide-content p:first-of-type {
+  margin: 0 0 4px;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--muted-color);
+}
+
+/* --- Slide dots --- */
+.carousel-fares .carousel-fares-slide-indicators {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0 0;
+  padding: 0;
+  line-height: 0;
+}
+
+.carousel-fares .carousel-fares-slide-indicator button {
+  width: 10px;
+  height: 10px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background-color: rgb(22 40 68 / 25%);
+  transition: background-color 0.2s, width 0.2s;
+  cursor: pointer;
+}
+
+.carousel-fares .carousel-fares-slide-indicator button:disabled,
+.carousel-fares .carousel-fares-slide-indicator button:hover,
+.carousel-fares .carousel-fares-slide-indicator button:focus-visible {
+  background-color: var(--brand-gold);
+}
+
+/* --- Prev / next arrows (50x50, white, radius 15px, navy glyph) --- */
+.carousel-fares .carousel-fares-navigation-buttons {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.carousel-fares .carousel-fares-navigation-buttons button {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  margin: 0 -8px;
+  padding: 0;
+  border: 0;
+  border-radius: 15px;
+  background-color: #fff;
+  box-shadow: 0 4px 16px rgb(22 40 68 / 18%);
+  pointer-events: auto;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.carousel-fares .carousel-fares-navigation-buttons button:hover,
+.carousel-fares .carousel-fares-navigation-buttons button:focus-visible {
+  background-color: var(--brand-gold);
+}
+
+.carousel-fares .carousel-fares-navigation-buttons button::after {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 2px);
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--brand-navy);
+  border-bottom: 0;
+  border-left: 0;
+  transform: translate(-50%, -50%) rotate(-135deg);
+}
+
+.carousel-fares .carousel-fares-navigation-buttons button.slide-next::after {
+  left: calc(50% - 2px);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.carousel-fares .carousel-fares-navigation-buttons button:hover::after,
+.carousel-fares .carousel-fares-navigation-buttons button:focus-visible::after {
+  border-color: #fff;
+}
+
+/* --- Tablet / desktop: multiple cards visible --- */
+@media (width >= 600px) {
+  .carousel-fares .carousel-fares-slide {
+    flex: 0 0 calc((100% - 24px) / 2);
+  }
+}
+
+@media (width >= 900px) {
+  .carousel-fares .carousel-fares-slide {
+    flex: 0 0 calc((100% - 3 * 24px) / 4);
+  }
+
+  .carousel-fares .carousel-fares-slide-content {
+    padding: 28px 30px 30px;
+  }
+
+  .carousel-fares .carousel-fares-slide-content h3 {
+    font-size: 24px;
+  }
+
+  .carousel-fares .carousel-fares-slide-content p {
+    font-size: 24px;
+  }
+
+  /* Push arrows just outside the card row */
+  .carousel-fares .carousel-fares-navigation-buttons {
+    left: -10px;
+    right: -10px;
+  }
+
+  .carousel-fares .carousel-fares-navigation-buttons button {
+    margin: 0;
+  }
+}

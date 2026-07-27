@@ -1,0 +1,99 @@
+/*
+ * Table Block — Nile Air branded data table
+ * Qatar-Airways-style: navy header, striped rows, rounded corners.
+ */
+
+.table.block {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table.block table {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid #ededed;
+  border-radius: 12px;
+  overflow: hidden;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-s);
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+@media (width >= 900px) {
+  .table.block table {
+    font-size: var(--body-font-size-m);
+  }
+}
+
+/* cells */
+.table.block table th,
+.table.block table td {
+  padding: 12px 8px;
+  text-align: center;
+  line-height: 1.5;
+  vertical-align: middle;
+  border-bottom: 1px solid #ededed;
+}
+
+@media (width >= 900px) {
+  .table.block table th,
+  .table.block table td {
+    padding: 16px 12px;
+  }
+}
+
+.table.block table th p,
+.table.block table td p {
+  margin: 0;
+}
+
+.table.block table td p + p {
+  margin-top: 0.25em;
+}
+
+/* header row — brand navy */
+.table.block table thead tr {
+  background-color: var(--brand-navy);
+}
+
+.table.block table thead th {
+  font-family: var(--heading-font-family);
+  font-weight: 700;
+  color: #fff;
+  border-bottom: none;
+}
+
+/* bordered variant */
+.table.block.bordered table th,
+.table.block.bordered table td {
+  border: 1px solid #ededed;
+}
+
+/* first-column emphasis (route names) */
+.table.block table tbody td:first-child {
+  font-weight: 600;
+  color: var(--brand-navy);
+}
+
+/* remove bottom border on last row so it sits flush with rounded corner */
+.table.block table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* no header variant */
+.table.block.no-header table tbody tr:first-child td {
+  border-top: none;
+}
+
+/* striped variant */
+.table.block.striped table tbody tr:nth-child(odd) {
+  background-color: var(--brand-grey);
+}
+
+.table.block.striped table tbody tr:nth-child(even) {
+  background-color: var(--background-color);
+}

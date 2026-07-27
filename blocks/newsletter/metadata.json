@@ -1,0 +1,39 @@
+{
+  "variantName": "newsletter",
+  "baseBlock": "newsletter",
+  "version": "1.0.0",
+  "created": "2026-07-27T06:39:32.188Z",
+  "sourceContext": {
+    "originUrl": "https://www.nileair.com/",
+    "originPage": "Nile Air home page",
+    "blockPosition": "bottom"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "signup",
+    "imagePattern": "noimg"
+  },
+  "contentPattern": {
+    "structure": "heading + subtext + email input + subscribe button",
+    "buttonCount": 1,
+    "imageCount": 0
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "newsletter/email signup bands",
+      "static subscribe widgets"
+    ],
+    "notSuitableFor": [
+      "multi-field forms",
+      "content cards"
+    ]
+  },
+  "usage": {
+    "pagesUsing": [
+      "/"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-07-27T06:39:32.188Z"
+  }
+}

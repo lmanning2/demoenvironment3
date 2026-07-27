@@ -1,0 +1,65 @@
+/* Nile Air "Why choose us" feature grid: centered icon cards with linked headings */
+
+.cards-features > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px 16px;
+}
+
+.cards-features > ul > li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.cards-features .cards-features-card-image {
+  margin: 0;
+  line-height: 0;
+}
+
+.cards-features .cards-features-card-image img {
+  width: 60px;
+  height: 56px;
+  object-fit: contain;
+}
+
+.cards-features .cards-features-card-body {
+  margin: 0;
+}
+
+.cards-features .cards-features-card-body h4 {
+  margin: 0;
+  font-family: var(--heading-font-family);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--brand-navy);
+}
+
+.cards-features .cards-features-card-body a:any-link {
+  color: var(--brand-navy);
+  text-decoration: none;
+}
+
+.cards-features .cards-features-card-body a:hover {
+  color: var(--brand-gold);
+  text-decoration: none;
+}
+
+@media (width >= 600px) {
+  .cards-features > ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .cards-features > ul {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 24px 16px;
+  }
+}

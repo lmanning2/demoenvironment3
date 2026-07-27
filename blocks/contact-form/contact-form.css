@@ -1,0 +1,124 @@
+/*
+ * Contact Form (static visual example)
+ * Nile Air pet-travel contact panel, Qatar-Airways-style.
+ * Values derived from the source form on nileair.com/travelling-pets:
+ *   - labels: 16px / 600 above each field, 8px gap to control
+ *   - text inputs: light grey fill (#f9f9f9), 15px padding, 18px text
+ *   - select / textarea: white with subtle border, rounded
+ *   - Send: full-width gold, uppercase white text, 15px 30px padding
+ * Wrapped in a card-like panel with comfortable spacing.
+ */
+
+.contact-form {
+  box-sizing: border-box;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  background-color: var(--background-color);
+  border: 1px solid #e7eaee;
+  border-radius: 12px;
+  box-shadow: 0 6px 24px rgb(22 40 68 / 6%);
+}
+
+.contact-form .contact-form-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-form .contact-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contact-form .contact-form-label {
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-s, 16px);
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--text-color);
+}
+
+.contact-form .contact-form-control {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 15px;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m, 18px);
+  line-height: 1.4;
+  color: var(--text-color);
+  background-color: #f9f9f9;
+  border: 1px solid #e7eaee;
+  border-radius: 6px;
+}
+
+.contact-form .contact-form-control::placeholder {
+  color: #6b7280;
+  opacity: 1;
+}
+
+.contact-form .contact-form-control:focus {
+  outline: none;
+  background-color: var(--background-color);
+  border-color: var(--brand-gold);
+  box-shadow: 0 0 0 3px rgb(195 174 124 / 25%);
+}
+
+.contact-form textarea.contact-form-control {
+  min-height: 160px;
+  resize: vertical;
+}
+
+.contact-form select.contact-form-control {
+  appearance: none;
+  padding-right: 40px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='%23162844' d='M4 6l4 4 4-4z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  cursor: pointer;
+}
+
+.contact-form .contact-form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-form .contact-form-submit {
+  width: 100%;
+  padding: 15px 30px;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m, 18px);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: #fff;
+  background-color: var(--brand-gold);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.contact-form .contact-form-submit:hover,
+.contact-form .contact-form-submit:focus-visible {
+  outline: none;
+  background-color: var(--brand-gold-dark);
+}
+
+@media (width >= 600px) {
+  .contact-form .contact-form-row {
+    flex-direction: row;
+  }
+
+  .contact-form .contact-form-row .contact-form-field {
+    flex: 1;
+  }
+}
+
+@media (width >= 900px) {
+  .contact-form {
+    padding: 40px;
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "variantName": "cards-features",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-07-27T06:39:32.188Z",
+  "sourceContext": {
+    "originUrl": "https://www.nileair.com/",
+    "originPage": "Nile Air home page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "feature",
+    "imagePattern": "icon"
+  },
+  "contentPattern": {
+    "structure": "icon + linked heading",
+    "buttonCount": 0,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "why-choose feature grids",
+      "icon benefit grids (centered)"
+    ],
+    "notSuitableFor": [
+      "article cards with images/excerpts",
+      "fare price cards"
+    ]
+  },
+  "usage": {
+    "pagesUsing": [
+      "/"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-07-27T06:39:32.188Z"
+  }
+}

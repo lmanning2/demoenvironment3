@@ -1,0 +1,86 @@
+/* hero-cover: content-page lead cover image + optional heading/intro
+   Qatar-Airways-style wide rounded cover photograph. */
+
+.hero-cover {
+  margin: 0;
+  padding: 0;
+}
+
+/* text row: optional heading + intro beneath the cover */
+.hero-cover > div:last-child {
+  margin: 0;
+}
+
+/* image row: the wide cover photograph */
+.hero-cover > div:first-child {
+  margin: 0;
+}
+
+.hero-cover > div:first-child > div {
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+}
+
+.hero-cover picture {
+  display: block;
+  width: 100%;
+}
+
+.hero-cover picture img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.hero-cover > div:last-child > div {
+  margin: 0;
+  padding: 0;
+}
+
+.hero-cover > div:last-child h1,
+.hero-cover > div:last-child h2,
+.hero-cover > div:last-child h3,
+.hero-cover > div:last-child h4,
+.hero-cover > div:last-child h5,
+.hero-cover > div:last-child h6 {
+  margin: 24px 0 0;
+  color: var(--brand-navy);
+}
+
+.hero-cover > div:last-child p {
+  margin: 12px 0 0;
+  color: var(--muted-color);
+  font-size: var(--body-font-size-m);
+  line-height: 1.6;
+}
+
+/* when the block is authored without a cover image */
+.hero-cover.no-image > div:first-child {
+  display: none;
+}
+
+/* hide empty optional text cell / row */
+.hero-cover > div:last-child > div:empty {
+  display: none;
+}
+
+@media (width >= 900px) {
+  .hero-cover picture img {
+    aspect-ratio: 3.5 / 1;
+    border-radius: 16px;
+  }
+
+  .hero-cover > div:last-child h1,
+  .hero-cover > div:last-child h2,
+  .hero-cover > div:last-child h3,
+  .hero-cover > div:last-child h4,
+  .hero-cover > div:last-child h5,
+  .hero-cover > div:last-child h6 {
+    margin-top: 32px;
+  }
+}

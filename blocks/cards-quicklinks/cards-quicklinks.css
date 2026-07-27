@@ -1,0 +1,85 @@
+/* Nile Air quick-links: horizontal row of icon + linked label items */
+
+/* Full-width grey band behind the quick-links row */
+.cards-quicklinks-wrapper {
+  max-width: 100% !important;
+  padding: 0 !important;
+  background-color: var(--brand-grey);
+}
+
+.cards-quicklinks {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 50px 24px;
+}
+
+.cards-quicklinks > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px 16px;
+}
+
+.cards-quicklinks > ul > li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.cards-quicklinks .cards-quicklinks-card-image {
+  line-height: 0;
+}
+
+.cards-quicklinks .cards-quicklinks-card-image img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.cards-quicklinks .cards-quicklinks-card-body {
+  margin: 0;
+}
+
+.cards-quicklinks .cards-quicklinks-card-body h4 {
+  margin: 0;
+  font-family: var(--heading-font-family);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--brand-navy);
+}
+
+.cards-quicklinks .cards-quicklinks-card-body a:any-link {
+  color: var(--brand-navy);
+  text-decoration: none;
+}
+
+.cards-quicklinks .cards-quicklinks-card-body a:hover {
+  color: var(--brand-gold);
+  text-decoration: none;
+}
+
+@media (width >= 600px) {
+  .cards-quicklinks > ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .cards-quicklinks {
+    padding: 50px 32px;
+  }
+
+  .cards-quicklinks > ul {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 24px 16px;
+  }
+
+  .cards-quicklinks .cards-quicklinks-card-body h4 {
+    font-size: 20px;
+  }
+}

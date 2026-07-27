@@ -1,0 +1,39 @@
+{
+  "variantName": "carousel-hero",
+  "baseBlock": "carousel",
+  "version": "1.0.0",
+  "created": "2026-07-27T06:39:32.188Z",
+  "sourceContext": {
+    "originUrl": "https://www.nileair.com/",
+    "originPage": "Nile Air home page",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "spacious",
+    "purpose": "hero",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "image + heading + text + CTA per slide",
+    "buttonCount": 1,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "home/landing hero carousels",
+      "full-bleed promotional slide rotations"
+    ],
+    "notSuitableFor": [
+      "small card carousels",
+      "content that must all stay visible"
+    ]
+  },
+  "usage": {
+    "pagesUsing": [
+      "/"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-07-27T06:39:32.188Z"
+  }
+}

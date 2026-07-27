@@ -1,0 +1,228 @@
+/* Booking Widget — static Nile Air / Qatar-style flight-search bar. */
+
+.booking-widget {
+  box-sizing: border-box;
+  background-color: var(--brand-navy);
+  color: #fff;
+  padding: 28px 20px;
+  font-family: var(--body-font-family);
+}
+
+.booking-widget * {
+  box-sizing: border-box;
+}
+
+/* Full-width dark band: break out of the section content max-width. */
+.section .booking-widget-wrapper {
+  max-width: 100% !important;
+  padding: 0 !important;
+}
+
+/* --- Tabs ----------------------------------------------------------------- */
+.booking-widget .booking-widget-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  margin-bottom: 22px;
+}
+
+.booking-widget .booking-widget-tab {
+  appearance: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: rgb(255 255 255 / 20%);
+  font-family: var(--heading-font-family);
+  font-size: 20px;
+  font-weight: 500;
+  padding: 6px 4px;
+  cursor: pointer;
+  line-height: 1.2;
+}
+
+.booking-widget .booking-widget-tab.is-active {
+  color: #fff;
+  border-bottom-color: var(--brand-gold);
+}
+
+/* --- Search panel --------------------------------------------------------- */
+.booking-widget .booking-widget-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.booking-widget .booking-widget-fields {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px 26px;
+}
+
+.booking-widget .booking-widget-route {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* Labelled field: large value on top, small label beneath. */
+.booking-widget .booking-widget-field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgb(255 255 255 / 35%);
+}
+
+.booking-widget .booking-widget-field-value {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.booking-widget .booking-widget-field-label {
+  order: 2;
+  color: rgb(255 255 255 / 70%);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+/* Airport code/city fields have no divider (grouped by the route). */
+.booking-widget .booking-widget-airport {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.booking-widget .booking-widget-airport .booking-widget-field-value {
+  font-size: 34px;
+  font-weight: 600;
+}
+
+/* Fields carrying a dropdown caret. */
+.booking-widget .has-caret {
+  position: relative;
+  padding-right: 26px;
+}
+
+.booking-widget .has-caret::after {
+  content: '';
+  position: absolute;
+  right: 4px;
+  top: 8px;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid rgb(255 255 255 / 80%);
+  border-bottom: 2px solid rgb(255 255 255 / 80%);
+  transform: rotate(45deg);
+}
+
+/* Double-arrow swap indicator between the two airports. */
+.booking-widget .booking-widget-swap {
+  position: relative;
+  flex: 0 0 auto;
+  width: 40px;
+  height: 16px;
+}
+
+.booking-widget .booking-widget-swap::before,
+.booking-widget .booking-widget-swap::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: rgb(255 255 255 / 80%);
+}
+
+.booking-widget .booking-widget-swap::before { top: 6px; }
+.booking-widget .booking-widget-swap::after { top: 10px; }
+
+/* --- Search button (gold circle with arrow) ------------------------------ */
+.booking-widget .booking-widget-search {
+  appearance: none;
+  border: 0;
+  background-color: var(--brand-gold);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  flex: 0 0 auto;
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.booking-widget .booking-widget-search:hover {
+  background-color: var(--brand-gold-dark);
+}
+
+.booking-widget .booking-widget-search-icon {
+  position: relative;
+  width: 22px;
+  height: 2px;
+  background-color: var(--brand-navy);
+}
+
+.booking-widget .booking-widget-search-icon::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: -4px;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid var(--brand-navy);
+  border-right: 2px solid var(--brand-navy);
+  transform: rotate(45deg);
+}
+
+/* --- Options row ---------------------------------------------------------- */
+.booking-widget .booking-widget-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.booking-widget .booking-widget-options-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.booking-widget .booking-widget-option-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: rgb(255 255 255 / 85%);
+  cursor: pointer;
+}
+
+.booking-widget .booking-widget-checkbox {
+  width: 16px;
+  height: 16px;
+  border: 1px solid rgb(255 255 255 / 60%);
+  border-radius: 2px;
+  flex: 0 0 auto;
+}
+
+/* --- Responsive ----------------------------------------------------------- */
+@media (width >= 900px) {
+  .booking-widget {
+    padding: 45px 40px;
+  }
+
+  .booking-widget .booking-widget-fields {
+    flex-wrap: nowrap;
+  }
+}
+
+@media (width >= 1200px) {
+  .booking-widget {
+    padding: 45px calc((100% - var(--content-max-width)) / 2 + 32px);
+  }
+}

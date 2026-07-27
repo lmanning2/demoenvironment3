@@ -1,0 +1,39 @@
+{
+  "variantName": "booking-widget",
+  "baseBlock": "booking-widget",
+  "version": "1.0.0",
+  "created": "2026-07-27T06:39:32.188Z",
+  "sourceContext": {
+    "originUrl": "https://www.nileair.com/",
+    "originPage": "Nile Air home page",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "compact",
+    "purpose": "widget",
+    "imagePattern": "noimg"
+  },
+  "contentPattern": {
+    "structure": "tab row + static flight-search fields (from/to/trip/dates/passengers/options/search)",
+    "buttonCount": 4,
+    "imageCount": 0
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "hardcoded static booking/reservation widgets",
+      "flight-search visual examples"
+    ],
+    "notSuitableFor": [
+      "functional forms",
+      "content grids"
+    ]
+  },
+  "usage": {
+    "pagesUsing": [
+      "/"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-07-27T06:39:32.188Z"
+  }
+}

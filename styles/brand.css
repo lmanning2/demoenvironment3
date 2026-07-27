@@ -1,0 +1,37 @@
+:root {
+  /* Nile Air brand fonts */
+  --heading-font-family: "Poppins", -apple-system, roboto, sans-serif;
+  --body-font-family: "Poppins", -apple-system, roboto, sans-serif;
+
+  /* Nile Air brand colors */
+  --background-color: #fff;
+  --text-color: #162844;
+  --heading-color: #0f1c31;
+  --muted-color: #384652;
+  --link-color: #162844;
+  --link-hover-color: #c3ae7c;
+
+  /* Brand palette */
+  --brand-navy: #162844;
+  --brand-gold: #c3ae7c;
+  --brand-gold-dark: #ab9564;
+  --brand-grey: #f6f7f9;
+
+  /* Section variants */
+  --dark-background-color: #162844;
+  --dark-text-color: #fff;
+  --light-background-color: #f6f7f9;
+
+  /* Layout */
+  --section-padding: 64px;
+  --content-max-width: 1200px;
+  --nav-height: 72px;
+
+  /* Heading sizes (desktop) */
+  --heading-size-xxl: 54px;
+  --heading-size-xl: 44px;
+  --heading-size-l: 32px;
+  --heading-size-m: 24px;
+  --heading-size-s: 20px;
+  --heading-size-xs: 18px;
+}

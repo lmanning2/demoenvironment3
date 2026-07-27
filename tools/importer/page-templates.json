@@ -1,0 +1,57 @@
+{
+  "metadata": {
+    "projectType": "da"
+  },
+  "templates": [
+    {
+      "name": "home",
+      "urls": [
+        "https://www.nileair.com/"
+      ],
+      "representativeUrl": "https://www.nileair.com/",
+      "coverageGaps": [],
+      "description": "Nile Air home page. Layout styled after Qatar Airways homepage. Sections: hero carousel (promo slides), quick-links row, 'Why choose Nile Air?' feature grid, 'Our Promotions' fare-card carousel, 'News Room' cards, mobile app download CTA, FAQ accordion, newsletter signup. Includes a hardcoded booking widget content block near the top.",
+      "blocks": [
+        { "name": "booking-widget", "instances": ["body > div.header-bottom.gray_bg"] },
+        { "name": "carousel-hero", "instances": ["#layout-content > div.slider_area"] },
+        { "name": "section-quicklinks", "instances": ["#layout-content > div.feature-area.demo_bg"], "section": "grey" },
+        { "name": "cards-quicklinks", "instances": ["#layout-content > div.feature-area.demo_bg"] },
+        { "name": "cards-features", "instances": ["#layout-content > div.choose-area.pb-4"] },
+        { "name": "carousel-fares", "instances": ["#layout-content > div.promotions_area"] },
+        { "name": "cards-news", "instances": ["#layout-content > div.news-area", "#layout-content > div.container"] },
+        { "name": "hero-app", "instances": ["#layout-content > div.app-area.max-bg"] },
+        { "name": "section-faq", "instances": ["#layout-content > div.faq-area.gray_bg"], "section": "dark" },
+        { "name": "accordion", "instances": ["#layout-content > div.faq-area.gray_bg"] },
+        { "name": "newsletter", "instances": ["#layout-content > div.newsletter-area"] }
+      ]
+    },
+    {
+      "name": "baggage-allowance",
+      "urls": [
+        "https://www.nileair.com/baggage-allowance"
+      ],
+      "representativeUrl": "https://www.nileair.com/baggage-allowance",
+      "coverageGaps": [],
+      "description": "Nile Air baggage allowance page. Layout styled after Qatar Airways baggage/allowance. Sections: breadcrumbs + page title, cover image with intro text, baggage allowance table (striped, by route), revision note, transport of local liquid products policy list, and Baggage Allowance FAQ accordion.",
+      "blocks": [
+        { "name": "hero-cover", "instances": ["#layout-content > div.page-wrapper:nth-of-type(2)"] },
+        { "name": "table", "instances": ["#layout-content > div.page-wrapper:nth-of-type(3) table", "#layout-content table.table"] },
+        { "name": "accordion", "instances": ["#baggage-allowance-faqs", "#layout-content > div.page-wrapper:nth-of-type(6) div.faq-box-area"] }
+      ]
+    },
+    {
+      "name": "travelling-pets",
+      "urls": [
+        "https://www.nileair.com/travelling-pets"
+      ],
+      "representativeUrl": "https://www.nileair.com/travelling-pets",
+      "coverageGaps": [],
+      "description": "Nile Air travelling with pets page. Layout styled after Qatar Airways baggage/animals. Sections: breadcrumbs + page title, cover image with intro text, Service Pets copy, Pets accordion (containers/food), contact form, and Travelling With Pets FAQ accordion.",
+      "blocks": [
+        { "name": "hero-cover", "instances": ["#layout-content > div.page-wrapper:nth-of-type(2)"] },
+        { "name": "accordion", "instances": ["#pets", "#travelling-with-pets-faqs"] },
+        { "name": "contact-form", "instances": ["#contact-us"] }
+      ]
+    }
+  ]
+}

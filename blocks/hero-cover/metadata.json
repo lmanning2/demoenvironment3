@@ -1,0 +1,39 @@
+{
+  "variantName": "hero-cover",
+  "baseBlock": "hero",
+  "version": "1.0.0",
+  "created": "2026-07-27T06:50:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.nileair.com/baggage-allowance",
+    "originPage": "baggage allowance information page",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "content-cover",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "cover image + heading + intro",
+    "buttonCount": 0,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "information / policy pages that open with a wide cover photograph",
+      "content pages with a lead-in image and optional intro heading/text",
+      "baggage, travel-info and similar editorial landing pages"
+    ],
+    "notSuitableFor": [
+      "app-download or promo CTA bands with store badges (use hero-app)",
+      "rotating multi-slide promotional heroes (use carousel-hero)",
+      "pages with no lead image"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/baggage-allowance", "/travelling-pets"],
+    "reuseCount": 2,
+    "lastUsed": "2026-07-27T06:55:00.000Z"
+  }
+}

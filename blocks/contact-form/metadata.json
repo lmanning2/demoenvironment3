@@ -1,0 +1,41 @@
+{
+  "variantName": "contact-form",
+  "baseBlock": "form",
+  "version": "1.0.0",
+  "created": "2026-07-27T06:55:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.nileair.com/travelling-pets",
+    "originPage": "travelling with pets page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "contact-form",
+    "imagePattern": "noimg"
+  },
+  "contentPattern": {
+    "structure": "name text + subject select + (email + mobile two-column) + message textarea + send button",
+    "buttonCount": 1,
+    "imageCount": 0,
+    "fieldCount": 5
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "static contact / enquiry forms migrated from DA projects without the AEM Forms plugin",
+      "pet-travel, support and general contact forms with name/subject/email/phone/message fields",
+      "display-only form visual examples (no submission)"
+    ],
+    "notSuitableFor": [
+      "functional forms requiring real submission (use the AEM Forms plugin / adaptive form block)",
+      "single-field signup bands (use newsletter)",
+      "content cards or hero sections"
+    ]
+  },
+  "notes": "Static, display-only representation. The AEM Forms plugin is NOT enabled for this DA migration, so this block renders the form fields visually without submitting - consistent with the hardcoded booking-widget and static newsletter blocks. Content model: block-name row, then one row per field ([type | name | label | placeholder-or-options]) and a final [submit | label] row.",
+  "usage": {
+    "pagesUsing": ["/travelling-pets"],
+    "reuseCount": 1,
+    "lastUsed": "2026-07-27T06:55:00.000Z"
+  }
+}

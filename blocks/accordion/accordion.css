@@ -1,0 +1,181 @@
+/*
+ * Accordion block (FAQ)
+ * Migrated from nileair.com FAQ accordions (baggage-allowance, home, pets).
+ * Card design: light cards with subtle shadow, bold navy question, circular
+ * chevron toggle on the right, muted answer text. Values extracted from the
+ * original Bootstrap accordion (.accordion-item / .accordion-button /
+ * .accordion-body). Works on both light and dark (.section.dark) sections.
+ */
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* item card */
+.accordion .accordion-item {
+  background-color: var(--brand-grey, #f6f7f9);
+  border: 0;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px 0 rgb(85 105 135 / 10%);
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.accordion .accordion-item[open] {
+  box-shadow: 0 4px 14px 0 rgb(22 40 68 / 10%);
+}
+
+/* question / summary */
+.accordion .accordion-item-label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0;
+  padding: 22px 24px;
+  color: var(--brand-navy, #162844);
+  font-family: var(--heading-font-family, "Poppins", sans-serif);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: left;
+  cursor: pointer;
+  list-style: none;
+  transition: color 0.2s;
+}
+
+.accordion .accordion-item-label::-webkit-details-marker {
+  display: none;
+}
+
+.accordion .accordion-item-label p {
+  margin: 0;
+  flex: 1;
+}
+
+.accordion .accordion-item-label:hover {
+  color: var(--brand-gold, #c3ae7c);
+}
+
+/* circular toggle with a chevron drawn inside (down when closed, up when open) */
+.accordion .accordion-item-label::after {
+  content: '';
+  flex: 0 0 auto;
+  margin-left: auto;
+  width: 26px;
+  height: 26px;
+  border: 1.5px solid currentcolor;
+  border-radius: 50%;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23162844" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>');
+  background-position: center;
+  background-size: 13px 13px;
+  background-repeat: no-repeat;
+  transition: transform 0.25s ease, border-color 0.2s;
+}
+
+/* open state: rotate chevron and switch accent to gold */
+.accordion .accordion-item[open] .accordion-item-label {
+  color: var(--brand-navy, #162844);
+}
+
+.accordion .accordion-item[open] .accordion-item-label::after {
+  transform: rotate(180deg);
+  border-color: var(--brand-gold, #c3ae7c);
+  color: var(--brand-gold, #c3ae7c);
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23c3ae7c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>');
+}
+
+/* answer / body */
+.accordion .accordion-item-body {
+  padding: 0 24px 22px;
+  color: var(--muted-color, #556987);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.accordion .accordion-item-body p {
+  margin: 0 0 0.8em;
+}
+
+.accordion .accordion-item-body p:first-child {
+  margin-top: 0;
+}
+
+.accordion .accordion-item-body p:last-child {
+  margin-bottom: 0;
+}
+
+.accordion .accordion-item-body ul,
+.accordion .accordion-item-body ol {
+  margin: 0 0 0.8em;
+  padding-left: 20px;
+}
+
+.accordion .accordion-item-body li {
+  margin-bottom: 0.4em;
+}
+
+.accordion .accordion-item-body a {
+  color: var(--brand-gold-dark, #ab9564);
+  text-decoration: underline;
+}
+
+/* ---- dark section variant (e.g. home FAQ on navy band) ---- */
+main .section.dark .accordion .accordion-item {
+  background-color: rgb(255 255 255 / 6%);
+  box-shadow: none;
+}
+
+main .section.dark .accordion .accordion-item[open] {
+  background-color: rgb(255 255 255 / 9%);
+  box-shadow: none;
+}
+
+main .section.dark .accordion .accordion-item-label {
+  color: #fff;
+}
+
+main .section.dark .accordion .accordion-item-label::after {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>');
+}
+
+main .section.dark .accordion .accordion-item-label:hover {
+  color: var(--brand-gold, #c3ae7c);
+}
+
+main .section.dark .accordion .accordion-item[open] .accordion-item-label {
+  color: #fff;
+}
+
+main .section.dark .accordion .accordion-item-body {
+  color: rgb(255 255 255 / 82%);
+}
+
+main .section.dark .accordion .accordion-item-body a {
+  color: var(--brand-gold, #c3ae7c);
+}
+
+/* tablet and up: roomier padding, larger question type (matches source 30px) */
+@media (width >= 900px) {
+  .accordion {
+    gap: 24px;
+  }
+
+  .accordion .accordion-item-label {
+    padding: 28px 30px;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .accordion .accordion-item-label::after {
+    width: 28px;
+    height: 28px;
+  }
+
+  .accordion .accordion-item-body {
+    padding: 0 30px 28px;
+  }
+}
