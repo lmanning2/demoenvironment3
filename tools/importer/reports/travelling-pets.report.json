@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://www.nileair.com/travelling-pets",
+  "path": "travelling-pets",
+  "timestamp": "2026-07-27T07:23:52.540Z",
+  "title": "Nile Air – Your Journey, Our Care",
+  "template": "travelling-pets",
+  "blocks": [
+    "hero-cover",
+    "accordion",
+    "accordion",
+    "contact-form"
+  ]
+}

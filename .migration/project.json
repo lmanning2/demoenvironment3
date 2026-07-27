@@ -1,0 +1,10 @@
+{
+  "type": "da",
+  "sites": {
+    "demoenvironment3": {
+      "previewOrg": "lmanning2",
+      "previewSite": "demoenvironment3",
+      "libraryUrl": "https://main--sta-boilerplate--aemdemos.aem.page/tools/sidekick/library.json"
+    }
+  }
+}
