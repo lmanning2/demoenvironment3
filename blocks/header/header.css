@@ -1,6 +1,6 @@
 /* header and nav layout */
 header .nav-wrapper {
-  background-color: var(--background-color);
+  background-color: var(--brand-navy);
   width: 100%;
   z-index: 2;
   position: fixed;
@@ -19,6 +19,7 @@ header nav {
   height: var(--nav-height);
   padding: 0 24px;
   font-family: var(--body-font-family);
+  color: #fff;
 }
 
 header nav[aria-expanded='true'] {
@@ -149,8 +150,8 @@ header .nav-brand {
 }
 
 header nav .nav-brand img {
-  width: 128px;
-  height: auto;
+  width: auto;
+  height: 44px;
 }
 
 /* sections */
@@ -266,7 +267,65 @@ header nav .nav-sections ul > li > ul > li {
   }
 }
 
-/* tools */
+/* tools — Nile Air: Check-in + language, right-aligned, gold hover. */
 header nav .nav-tools {
   grid-area: tools;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: var(--body-font-size-xs);
+  font-weight: 500;
+}
+
+header nav .nav-tools p {
+  margin: 0;
+}
+
+header nav .nav-tools a:hover {
+  color: var(--brand-gold);
+  text-decoration: none;
+}
+
+/* ---------------------------------------------------------------------------
+   Nile Air branding — Qatar Airways-style navy top bar.
+   nav-wrapper navy background + white nav text set on the base rules above.
+   --------------------------------------------------------------------------- */
+header nav .nav-sections a:hover {
+  color: var(--brand-gold);
+  text-decoration: none;
+}
+
+@media (width >= 900px) {
+  header nav .nav-sections {
+    font-family: var(--heading-font-family);
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li {
+    font-weight: 500;
+    padding: 8px 0;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li:hover {
+    color: var(--brand-gold);
+  }
+
+  /* Dropdown panels: white surface, navy text (readable off the navy bar). */
+  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > ul {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgb(22 40 68 / 20%);
+    top: 130%;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > ul::before {
+    border-bottom-color: #fff;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li > ul a:any-link {
+    color: var(--brand-navy);
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li > ul a:hover {
+    color: var(--brand-gold);
+  }
 }
