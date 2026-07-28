@@ -354,7 +354,12 @@ main .default-content-wrapper > h2::after {
   margin: 16px auto 0;
   background-color: var(--brand-gold);
 }
-
+/* Page/section headings authored as h3 default content (e.g. baggage page
+   "Baggage Allowance", intro line): centered brand navy. */
+main .default-content-wrapper > h3 {
+  text-align: center;
+  color: var(--brand-navy);
+}
 main .section.dark h1,
 main .section.dark h2,
 main .section.dark h3,
