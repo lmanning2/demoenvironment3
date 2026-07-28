@@ -151,6 +151,30 @@ export default async function decorate(block) {
     });
   }
 
+  // language switcher — turn the "Eng" tools link into a dropdown (EN / AR)
+  const navTools = nav.querySelector('.nav-tools') || nav.children[nav.children.length - 1];
+  if (navTools) {
+    const langPara = navTools.querySelector('p:last-child');
+    const langLink = langPara && langPara.querySelector('a');
+    if (langLink) {
+      langPara.classList.add('nav-lang');
+      langPara.setAttribute('aria-expanded', 'false');
+      const menu = document.createElement('ul');
+      menu.className = 'nav-lang-menu';
+      menu.innerHTML = '<li><a href="/">English</a></li>'
+        + '<li><a href="https://www.nileair.com/ar" lang="ar">العربية</a></li>';
+      langPara.append(menu);
+      langLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        const open = langPara.getAttribute('aria-expanded') === 'true';
+        langPara.setAttribute('aria-expanded', open ? 'false' : 'true');
+      });
+      document.addEventListener('click', (e) => {
+        if (!langPara.contains(e.target)) langPara.setAttribute('aria-expanded', 'false');
+      });
+    }
+  }
+
   // hamburger for mobile
   const hamburger = document.createElement('div');
   hamburger.classList.add('nav-hamburger');
