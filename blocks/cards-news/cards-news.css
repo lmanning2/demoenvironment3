@@ -1,3 +1,9 @@
+/* Higher specificity than the global `main > .section > div { margin: auto }`
+   so the extra top spacing before the news cards actually applies. */
+main > .section > .cards-news-wrapper {
+  margin-top: 56px;
+}
+
 .cards-news > ul {
   list-style: none;
   margin: 0;
