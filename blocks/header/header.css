@@ -1,6 +1,6 @@
 /* header and nav layout */
 header .nav-wrapper {
-  background-color: var(--brand-navy);;
+  background-color: var(--brand-navy);
   width: 100%;
   z-index: 2;
   position: fixed;
@@ -19,7 +19,7 @@ header nav {
   height: var(--nav-height);
   padding: 0 24px;
   font-family: var(--body-font-family);
-      color: #fff;
+  color: #fff;
 }
 
 header nav[aria-expanded='true'] {
@@ -267,7 +267,6 @@ header nav .nav-sections ul > li > ul > li {
   }
 }
 
-/* tools */
 /* ---------------------------------------------------------------------------
    Nile Air branding — Qatar Airways-style navy top bar.
    nav-wrapper navy background + white nav text set on the base rules above.
@@ -323,10 +322,16 @@ header nav > div:last-child p:last-child a::after {
     padding: 8px 0;
   }
 
+  /* Keep room for the dropdown chevron so it doesn't overlap the label. */
+  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop {
+    padding-right: 18px;
+  }
+
   header nav .nav-sections .default-content-wrapper > ul > li:hover {
     color: var(--brand-gold);
   }
 
+  /* Dropdown panels: white surface, navy text (readable off the navy bar). */
   header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > ul {
     background-color: #fff;
     border-radius: 8px;
