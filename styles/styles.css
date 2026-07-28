@@ -339,7 +339,7 @@ main .section.dark {
 /* Section headings authored as default content (e.g. "Why choose Nile Air?",
    "Our Promotions"): centered, brand navy, with a short gold underline. */
 main .default-content-wrapper > h2 {
-  margin: 8px 0 56px;
+  margin: 56px 0;
   text-align: center;
   color: var(--brand-navy);
   font-weight: 700;
