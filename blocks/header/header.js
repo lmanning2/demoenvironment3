@@ -1,407 +1,195 @@
-/* header and nav layout */
-header .nav-wrapper {
-  background-color: var(--brand-navy);
-  width: 100%;
-  z-index: 2;
-  position: fixed;
-}
+import { getMetadata } from '../../scripts/aem.js';
+import { loadFragment } from '../fragment/fragment.js';
 
-header nav {
-  box-sizing: border-box;
-  display: grid;
-  grid-template:
-    'hamburger brand tools' var(--nav-height)
-    'sections sections sections' 1fr / auto 1fr auto;
-  align-items: center;
-  gap: 0 24px;
-  margin: auto;
-  max-width: 1248px;
-  height: var(--nav-height);
-  padding: 0 24px;
-  font-family: var(--body-font-family);
-  color: #fff;
-}
+// media query match that indicates mobile/tablet width
+const isDesktop = window.matchMedia('(min-width: 900px)');
 
-header nav[aria-expanded='true'] {
-  grid-template:
-    'hamburger brand' var(--nav-height)
-    'sections sections' 1fr
-    'tools tools' var(--nav-height) / auto 1fr;
-  overflow-y: auto;
-  min-height: 100dvh;
-}
-
-@media (width >= 900px) {
-  header .nav-wrapper {
-    position: relative;
-  }
-
-  header nav {
-    display: flex;
-    justify-content: space-between;
-    gap: 0 32px;
-    max-width: 1264px;
-    padding: 0 32px;
-  }
-
-  header nav[aria-expanded='true'] {
-    min-height: 0;
-    overflow: visible;
+function closeOnEscape(e) {
+  if (e.code === 'Escape') {
+    const nav = document.getElementById('nav');
+    const navSections = nav.querySelector('.nav-sections');
+    if (!navSections) return;
+    const navSectionExpanded = navSections.querySelector('[aria-expanded="true"]');
+    if (navSectionExpanded && isDesktop.matches) {
+      // eslint-disable-next-line no-use-before-define
+      toggleAllNavSections(navSections);
+      navSectionExpanded.focus();
+    } else if (!isDesktop.matches) {
+      // eslint-disable-next-line no-use-before-define
+      toggleMenu(nav, navSections);
+      nav.querySelector('button').focus();
+    }
   }
 }
 
-header nav p {
-  margin: 0;
-  line-height: 1;
-}
-
-header nav a:any-link {
-  color: currentcolor;
-}
-
-/* hamburger */
-header nav .nav-hamburger {
-  grid-area: hamburger;
-  height: 22px;
-  display: flex;
-  align-items: center;
-}
-
-header nav .nav-hamburger button {
-  height: 22px;
-  margin: 0;
-  border: 0;
-  border-radius: 0;
-  padding: 0;
-  background-color: var(--background-color);
-  color: inherit;
-  overflow: initial;
-  text-overflow: initial;
-  white-space: initial;
-}
-
-header nav .nav-hamburger-icon,
-header nav .nav-hamburger-icon::before,
-header nav .nav-hamburger-icon::after {
-  box-sizing: border-box;
-  display: block;
-  position: relative;
-  width: 20px;
-}
-
-header nav .nav-hamburger-icon::before,
-header nav .nav-hamburger-icon::after {
-  content: '';
-  position: absolute;
-  background: currentcolor;
-}
-
-header nav[aria-expanded='false'] .nav-hamburger-icon,
-header nav[aria-expanded='false'] .nav-hamburger-icon::before,
-header nav[aria-expanded='false'] .nav-hamburger-icon::after {
-  height: 2px;
-  border-radius: 2px;
-  background: currentcolor;
-}
-
-header nav[aria-expanded='false'] .nav-hamburger-icon::before {
-  top: -6px;
-}
-
-header nav[aria-expanded='false'] .nav-hamburger-icon::after {
-  top: 6px;
-}
-
-header nav[aria-expanded='true'] .nav-hamburger-icon {
-  height: 22px;
-}
-
-header nav[aria-expanded='true'] .nav-hamburger-icon::before,
-header nav[aria-expanded='true'] .nav-hamburger-icon::after {
-  top: 3px;
-  left: 1px;
-  transform: rotate(45deg);
-  transform-origin: 2px 1px;
-  width: 24px;
-  height: 2px;
-  border-radius: 2px;
-}
-
-header nav[aria-expanded='true'] .nav-hamburger-icon::after {
-  top: unset;
-  bottom: 3px;
-  transform: rotate(-45deg);
-}
-
-@media (width >= 900px) {
-  header nav .nav-hamburger {
-    display: none;
-    visibility: hidden;
+function closeOnFocusLost(e) {
+  const nav = e.currentTarget;
+  if (!nav.contains(e.relatedTarget)) {
+    const navSections = nav.querySelector('.nav-sections');
+    if (!navSections) return;
+    const navSectionExpanded = navSections.querySelector('[aria-expanded="true"]');
+    if (navSectionExpanded && isDesktop.matches) {
+      // eslint-disable-next-line no-use-before-define
+      toggleAllNavSections(navSections, false);
+    } else if (!isDesktop.matches) {
+      // eslint-disable-next-line no-use-before-define
+      toggleMenu(nav, navSections, false);
+    }
   }
 }
 
-/* brand */
-header .nav-brand {
-  grid-area: brand;
-  flex-basis: 128px;
-  font-size: var(--heading-font-size-s);
-  font-weight: 700;
-  line-height: 1;
-}
-
-header nav .nav-brand img {
-  width: auto;
-  height: 44px;
-}
-
-/* sections */
-header nav .nav-sections {
-  grid-area: sections;
-  flex: 1 1 auto;
-  display: none;
-  visibility: hidden;
-}
-
-header nav[aria-expanded='true'] .nav-sections {
-  display: block;
-  visibility: visible;
-  align-self: start;
-}
-
-header nav .nav-sections ul {
-  list-style: none;
-  padding-left: 0;
-  font-size: var(--body-font-size-s);
-}
-
-header nav .nav-sections ul > li {
-  font-weight: 500;
-}
-
-header nav .nav-sections ul > li > ul {
-  margin-top: 0;
-}
-
-header nav .nav-sections ul > li > ul > li {
-  font-weight: 400;
-}
-
-@media (width >= 900px) {
-  header nav .nav-sections {
-    display: block;
-    visibility: visible;
-    white-space: nowrap;
-  }
-
-  header nav[aria-expanded='true'] .nav-sections {
-    align-self: unset;
-  }
-
-  header nav .nav-sections .nav-drop {
-    position: relative;
-    padding-right: 16px;
-    cursor: pointer;
-  }
-
-  header nav .nav-sections .nav-drop::after {
-    content: '';
-    display: inline-block;
-    position: absolute;
-    top: 0.5em;
-    right: 2px;
-    transform: rotate(135deg);
-    width: 6px;
-    height: 6px;
-    border: 2px solid currentcolor;
-    border-radius: 0 1px 0 0;
-    border-width: 2px 2px 0 0;
-  }
-
-  header nav .nav-sections .nav-drop[aria-expanded='true']::after {
-    top: unset;
-    bottom: 0.5em;
-    transform: rotate(315deg);
-  }
-
-  header nav .nav-sections ul {
-    display: flex;
-    gap: 24px;
-    margin: 0;
-  }
-
-  header nav .nav-sections .default-content-wrapper > ul > li {
-    flex: 0 1 auto;
-    position: relative;
-  }
-
-  header nav .nav-sections .default-content-wrapper > ul > li > ul {
-    display: none;
-    position: relative;
-  }
-
-  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > ul {
-    display: block;
-    position: absolute;
-    left: -24px;
-    width: 200px;
-    top: 150%;
-    padding: 16px;
-    background-color: var(--light-color);
-    white-space: initial;
-  }
-
-  header nav .nav-sections .default-content-wrapper > ul > li > ul::before {
-    content: '';
-    position: absolute;
-    top: -8px;
-    left: 16px;
-    width: 0;
-    height: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-bottom: 8px solid var(--light-color);
-  }
-
-  header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
-    padding: 8px 0;
+function openOnKeydown(e) {
+  const focused = document.activeElement;
+  const isNavDrop = focused.className === 'nav-drop';
+  if (isNavDrop && (e.code === 'Enter' || e.code === 'Space')) {
+    const dropExpanded = focused.getAttribute('aria-expanded') === 'true';
+    // eslint-disable-next-line no-use-before-define
+    toggleAllNavSections(focused.closest('.nav-sections'));
+    focused.setAttribute('aria-expanded', dropExpanded ? 'false' : 'true');
   }
 }
 
-/* ---------------------------------------------------------------------------
-   Nile Air branding — Qatar Airways-style navy top bar.
-   nav-wrapper navy background + white nav text set on the base rules above.
-   --------------------------------------------------------------------------- */
-header nav .nav-sections a:hover {
-  color: var(--brand-gold);
-  text-decoration: none;
+function focusNavSection() {
+  document.activeElement.addEventListener('keydown', openOnKeydown);
 }
 
-/* tools — Nile Air: Check-in + language, right-aligned, gold hover.
-   Target both the assigned class and the nav's last child, because the tools
-   section does not always receive the .nav-tools class from the boilerplate. */
-header nav .nav-tools,
-header nav > div:last-child {
-  grid-area: tools;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  font-size: var(--body-font-size-xs);
-  font-weight: 500;
+/**
+ * Toggles all nav sections
+ * @param {Element} sections The container element
+ * @param {Boolean} expanded Whether the element should be expanded or collapsed
+ */
+function toggleAllNavSections(sections, expanded = false) {
+  if (!sections) return;
+  sections.querySelectorAll('.nav-sections .default-content-wrapper > ul > li').forEach((section) => {
+    section.setAttribute('aria-expanded', expanded);
+  });
 }
 
-/* The tools content sits inside a .default-content-wrapper, so lay the
-   Check-in / language links out in a row there (not just on the outer div). */
-header nav .nav-tools .default-content-wrapper,
-header nav > div:last-child .default-content-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-header nav .nav-tools p,
-header nav > div:last-child p {
-  margin: 0;
-}
-
-header nav .nav-tools a:hover,
-header nav > div:last-child a:hover {
-  color: var(--brand-gold);
-  text-decoration: none;
-}
-
-/* Language item ("Eng") gets a dropdown caret. */
-header nav .nav-lang {
-  position: relative;
-  cursor: pointer;
-}
-
-header nav .nav-lang > a::after {
-  content: '';
-  display: inline-block;
-  margin-left: 6px;
-  width: 6px;
-  height: 6px;
-  border-right: 2px solid currentcolor;
-  border-bottom: 2px solid currentcolor;
-  transform: translateY(-2px) rotate(45deg);
-  transition: transform 0.2s ease;
-}
-
-header nav .nav-lang[aria-expanded='true'] > a::after {
-  transform: translateY(1px) rotate(-135deg);
-}
-
-/* Language dropdown panel */
-header nav .nav-lang .nav-lang-menu {
-  display: none;
-  list-style: none;
-  margin: 0;
-  padding: 6px 0;
-  position: absolute;
-  top: 150%;
-  right: 0;
-  min-width: 120px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 10px 30px rgb(22 40 68 / 20%);
-  z-index: 3;
-}
-
-header nav .nav-lang[aria-expanded='true'] .nav-lang-menu {
-  display: block;
-}
-
-header nav .nav-lang .nav-lang-menu li {
-  margin: 0;
-}
-
-header nav .nav-lang .nav-lang-menu a:any-link {
-  display: block;
-  padding: 8px 16px;
-  color: var(--brand-navy);
-  white-space: nowrap;
-}
-
-header nav .nav-lang .nav-lang-menu a:hover {
-  color: var(--brand-gold);
-}
-
-@media (width >= 900px) {
-  header nav .nav-sections {
-    font-family: var(--heading-font-family);
+/**
+ * Toggles the entire nav
+ * @param {Element} nav The container element
+ * @param {Element} navSections The nav sections within the container element
+ * @param {*} forceExpanded Optional param to force nav expand behavior when not null
+ */
+function toggleMenu(nav, navSections, forceExpanded = null) {
+  const expanded = forceExpanded !== null ? !forceExpanded : nav.getAttribute('aria-expanded') === 'true';
+  const button = nav.querySelector('.nav-hamburger button');
+  document.body.style.overflowY = (expanded || isDesktop.matches) ? '' : 'hidden';
+  nav.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+  toggleAllNavSections(navSections, expanded || isDesktop.matches ? 'false' : 'true');
+  button.setAttribute('aria-label', expanded ? 'Open navigation' : 'Close navigation');
+  // enable nav dropdown keyboard accessibility
+  if (navSections) {
+    const navDrops = navSections.querySelectorAll('.nav-drop');
+    if (isDesktop.matches) {
+      navDrops.forEach((drop) => {
+        if (!drop.hasAttribute('tabindex')) {
+          drop.setAttribute('tabindex', 0);
+          drop.addEventListener('focus', focusNavSection);
+        }
+      });
+    } else {
+      navDrops.forEach((drop) => {
+        drop.removeAttribute('tabindex');
+        drop.removeEventListener('focus', focusNavSection);
+      });
+    }
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li {
-    font-weight: 500;
-    padding: 8px 0;
+  // enable menu collapse on escape keypress
+  if (!expanded || isDesktop.matches) {
+    // collapse menu on escape press
+    window.addEventListener('keydown', closeOnEscape);
+    // collapse menu on focus lost
+    nav.addEventListener('focusout', closeOnFocusLost);
+  } else {
+    window.removeEventListener('keydown', closeOnEscape);
+    nav.removeEventListener('focusout', closeOnFocusLost);
+  }
+}
+
+/**
+ * loads and decorates the header, mainly the nav
+ * @param {Element} block The header block element
+ */
+export default async function decorate(block) {
+  // load nav as fragment
+  const navMeta = getMetadata('nav');
+  const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
+  const fragment = await loadFragment(navPath);
+
+  // decorate nav DOM
+  block.textContent = '';
+  const nav = document.createElement('nav');
+  nav.id = 'nav';
+  while (fragment.firstElementChild) nav.append(fragment.firstElementChild);
+
+  const classes = ['brand', 'sections', 'tools'];
+  classes.forEach((c, i) => {
+    const section = nav.children[i];
+    if (section) section.classList.add(`nav-${c}`);
+  });
+
+  const navBrand = nav.querySelector('.nav-brand');
+  const brandLink = navBrand.querySelector('.button');
+  if (brandLink) {
+    brandLink.className = '';
+    brandLink.closest('.button-container').className = '';
   }
 
-  /* Keep room for the dropdown chevron so it doesn't overlap the label. */
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop {
-    padding-right: 18px;
+  const navSections = nav.querySelector('.nav-sections');
+  if (navSections) {
+    navSections.querySelectorAll(':scope .default-content-wrapper > ul > li').forEach((navSection) => {
+      if (navSection.querySelector('ul')) navSection.classList.add('nav-drop');
+      navSection.addEventListener('click', () => {
+        if (isDesktop.matches) {
+          const expanded = navSection.getAttribute('aria-expanded') === 'true';
+          toggleAllNavSections(navSections);
+          navSection.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+        }
+      });
+    });
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li:hover {
-    color: var(--brand-gold);
+  // language switcher — turn the "Eng" tools link into a dropdown (EN / AR)
+  const navTools = nav.querySelector('.nav-tools') || nav.children[nav.children.length - 1];
+  if (navTools) {
+    const langPara = navTools.querySelector('p:last-child');
+    const langLink = langPara && langPara.querySelector('a');
+    if (langLink) {
+      langPara.classList.add('nav-lang');
+      langPara.setAttribute('aria-expanded', 'false');
+      const menu = document.createElement('ul');
+      menu.className = 'nav-lang-menu';
+      menu.innerHTML = '<li><a href="/">English</a></li>'
+        + '<li><a href="https://www.nileair.com/ar" lang="ar">العربية</a></li>';
+      langPara.append(menu);
+      langLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        const open = langPara.getAttribute('aria-expanded') === 'true';
+        langPara.setAttribute('aria-expanded', open ? 'false' : 'true');
+      });
+      document.addEventListener('click', (e) => {
+        if (!langPara.contains(e.target)) langPara.setAttribute('aria-expanded', 'false');
+      });
+    }
   }
 
-  /* Dropdown panels: white surface, navy text (readable off the navy bar). */
-  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > ul {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgb(22 40 68 / 20%);
-    top: 130%;
-  }
+  // hamburger for mobile
+  const hamburger = document.createElement('div');
+  hamburger.classList.add('nav-hamburger');
+  hamburger.innerHTML = `<button type="button" aria-controls="nav" aria-label="Open navigation">
+      <span class="nav-hamburger-icon"></span>
+    </button>`;
+  hamburger.addEventListener('click', () => toggleMenu(nav, navSections));
+  nav.prepend(hamburger);
+  nav.setAttribute('aria-expanded', 'false');
+  // prevent mobile nav behavior on window resize
+  toggleMenu(nav, navSections, isDesktop.matches);
+  isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
 
-  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > ul::before {
-    border-bottom-color: #fff;
-  }
-
-  header nav .nav-sections .default-content-wrapper > ul > li > ul a:any-link {
-    color: var(--brand-navy);
-  }
-
-  header nav .nav-sections .default-content-wrapper > ul > li > ul a:hover {
-    color: var(--brand-gold);
-  }
+  const navWrapper = document.createElement('div');
+  navWrapper.className = 'nav-wrapper';
+  navWrapper.append(nav);
+  block.append(navWrapper);
 }
