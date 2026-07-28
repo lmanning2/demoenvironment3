@@ -267,8 +267,20 @@ header nav .nav-sections ul > li > ul > li {
   }
 }
 
-/* tools — Nile Air: Check-in + language, right-aligned, gold hover. */
-header nav .nav-tools {
+/* ---------------------------------------------------------------------------
+   Nile Air branding — Qatar Airways-style navy top bar.
+   nav-wrapper navy background + white nav text set on the base rules above.
+   --------------------------------------------------------------------------- */
+header nav .nav-sections a:hover {
+  color: var(--brand-gold);
+  text-decoration: none;
+}
+
+/* tools — Nile Air: Check-in + language, right-aligned, gold hover.
+   Target both the assigned class and the nav's last child, because the tools
+   section does not always receive the .nav-tools class from the boilerplate. */
+header nav .nav-tools,
+header nav > div:last-child {
   grid-area: tools;
   display: flex;
   align-items: center;
@@ -277,22 +289,27 @@ header nav .nav-tools {
   font-weight: 500;
 }
 
-header nav .nav-tools p {
+header nav .nav-tools p,
+header nav > div:last-child p {
   margin: 0;
 }
 
-header nav .nav-tools a:hover {
+header nav .nav-tools a:hover,
+header nav > div:last-child a:hover {
   color: var(--brand-gold);
   text-decoration: none;
 }
 
-/* ---------------------------------------------------------------------------
-   Nile Air branding — Qatar Airways-style navy top bar.
-   nav-wrapper navy background + white nav text set on the base rules above.
-   --------------------------------------------------------------------------- */
-header nav .nav-sections a:hover {
-  color: var(--brand-gold);
-  text-decoration: none;
+/* Language item ("Eng") gets a dropdown caret. */
+header nav > div:last-child p:last-child a::after {
+  content: '';
+  display: inline-block;
+  margin-left: 6px;
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid currentcolor;
+  border-bottom: 2px solid currentcolor;
+  transform: translateY(-2px) rotate(45deg);
 }
 
 @media (width >= 900px) {
