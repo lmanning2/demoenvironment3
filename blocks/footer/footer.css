@@ -11,6 +11,11 @@ footer .footer > div {
   padding: 48px 24px 24px;
 }
 
+footer .footer .section {
+  padding: 0;
+  margin: 0;
+}
+
 footer .footer p {
   margin: 0;
 }
@@ -24,19 +29,32 @@ footer .footer a:hover {
   color: var(--brand-gold);
 }
 
-footer .footer > div:first-child img {
+footer .footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Brand logo row */
+footer .footer .footer-brand img {
   height: 48px;
   width: auto;
 }
 
-footer .footer > div:nth-child(2) {
+/* Column link groups */
+footer .footer .footer-columns .default-content-wrapper {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 28px 32px;
+  gap: 0 32px;
   padding-top: 8px;
 }
 
-footer .footer > div:nth-child(2) h2 {
+footer .footer .footer-column h1,
+footer .footer .footer-column h2,
+footer .footer .footer-column h3,
+footer .footer .footer-column h4,
+footer .footer .footer-column h5,
+footer .footer .footer-column h6 {
   margin: 0;
   padding: 12px 0;
   font-family: var(--heading-font-family);
@@ -50,8 +68,10 @@ footer .footer > div:nth-child(2) h2 {
   border-bottom: 1px solid rgb(255 255 255 / 15%);
 }
 
-footer .footer > div:nth-child(2) h2::after {
+/* Chevron on each collapsible title */
+footer .footer .footer-column [role='button']::after {
   content: '';
+  flex: 0 0 auto;
   width: 8px;
   height: 8px;
   margin-left: 12px;
@@ -61,47 +81,43 @@ footer .footer > div:nth-child(2) h2::after {
   transition: transform 0.2s ease;
 }
 
-footer .footer > div:nth-child(2) h2[aria-expanded='true']::after {
+footer .footer .footer-column [role='button'][aria-expanded='true']::after {
   transform: rotate(-135deg);
 }
 
-footer .footer > div:nth-child(2) ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+footer .footer .footer-column ul {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.25s ease;
 }
 
-footer .footer > div:nth-child(2) h2[aria-expanded='true'] + ul {
+footer .footer .footer-column [aria-expanded='true'] + ul {
   max-height: 400px;
   padding: 10px 0 4px;
 }
 
-footer .footer > div:nth-child(2) li {
+footer .footer .footer-column li {
   margin: 0 0 8px;
   color: rgb(255 255 255 / 80%);
 }
 
-footer .footer > div:nth-child(3) {
+/* Social row */
+footer .footer .footer-social {
   border-top: 1px solid rgb(255 255 255 / 15%);
+  padding-top: 20px;
 }
 
-footer .footer > div:nth-child(3) p {
+footer .footer .footer-social p {
   font-family: var(--heading-font-family);
   font-weight: 500;
   margin-bottom: 12px;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-footer .footer > div:nth-child(3) ul {
-  list-style: none;
+footer .footer .footer-social ul {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
-  margin: 0;
-  padding: 0;
 }
 
 footer .footer .footer-social-icon {
@@ -125,29 +141,32 @@ footer .footer .footer-social-icon:hover {
   color: var(--brand-navy);
 }
 
-footer .footer > div:last-child {
+/* Bottom legal bar */
+footer .footer .footer-legal {
   border-top: 1px solid rgb(255 255 255 / 15%);
+  padding-top: 20px;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-footer .footer > div:last-child ul {
-  list-style: none;
+footer .footer .footer-legal ul {
   display: flex;
   flex-wrap: wrap;
   gap: 8px 24px;
-  margin: 0;
-  padding: 0;
 }
 
-footer .footer > div:last-child p {
+footer .footer .footer-legal li {
+  color: rgb(255 255 255 / 80%);
+}
+
+footer .footer .footer-legal p {
   color: rgb(255 255 255 / 70%);
 }
 
 @media (width >= 600px) {
-  footer .footer > div:nth-child(2) {
+  footer .footer .footer-columns .default-content-wrapper {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -157,28 +176,35 @@ footer .footer > div:last-child p {
     padding: 56px 32px 24px;
   }
 
-  footer .footer > div:nth-child(2) {
+  footer .footer .footer-columns .default-content-wrapper {
     grid-template-columns: repeat(4, 1fr);
+    align-items: start;
   }
 
-  footer .footer > div:nth-child(2) h2 {
+  /* Desktop: always-open columns, no chevron toggle (Qatar-style). */
+  footer .footer .footer-column h1,
+  footer .footer .footer-column h2,
+  footer .footer .footer-column h3,
+  footer .footer .footer-column h4,
+  footer .footer .footer-column h5,
+  footer .footer .footer-column h6 {
     cursor: default;
     border-bottom: 0;
     padding: 0 0 12px;
   }
 
-  footer .footer > div:nth-child(2) h2::after {
+  footer .footer .footer-column [role='button']::after {
     display: none;
   }
 
-  footer .footer > div:nth-child(2) ul,
-  footer .footer > div:nth-child(2) h2[aria-expanded='true'] + ul {
+  footer .footer .footer-column ul,
+  footer .footer .footer-column [aria-expanded='true'] + ul {
     max-height: none;
     overflow: visible;
     padding: 0;
   }
 
-  footer .footer > div:last-child {
+  footer .footer .footer-legal {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
