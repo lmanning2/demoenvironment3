@@ -97,3 +97,87 @@
 .table.block.striped table tbody tr:nth-child(even) {
   background-color: var(--background-color);
 }
+
+/* ---------------------------------------------------------------------------
+   Allowance variant — Qatar-style tabs built into the top of the table.
+   Tabs sit flush on the table's top edge; the active tab shares the navy
+   header colour so it reads as one connected surface.
+   --------------------------------------------------------------------------- */
+.table.block.table-allowance {
+  overflow: visible;
+}
+
+.table-allowance .table-allowance-tabs {
+  display: flex;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.table-allowance .table-allowance-tab {
+  appearance: none;
+  cursor: pointer;
+  flex: 1 1 50%;
+  margin: 0;
+  padding: 14px 32px;
+  border: 1px solid #ededed;
+  border-bottom: none;
+  background-color: var(--brand-grey);
+  color: var(--brand-navy);
+  font-family: var(--heading-font-family);
+  font-size: var(--body-font-size-s);
+  font-weight: 600;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* round only the outer top corners so the pair spans the full table width */
+.table-allowance .table-allowance-tab:first-child {
+  border-radius: 12px 0 0;
+}
+
+.table-allowance .table-allowance-tab:last-child {
+  border-radius: 0 12px 0 0;
+  border-left: none;
+}
+
+.table-allowance .table-allowance-tab:hover {
+  background-color: #e7eaef;
+}
+
+/* active tab merges into the navy table header below it */
+.table-allowance .table-allowance-tab[aria-selected='true'] {
+  background-color: var(--brand-navy);
+  border-color: var(--brand-navy);
+  color: #fff;
+}
+
+@media (width >= 900px) {
+  .table-allowance .table-allowance-tab {
+    font-size: var(--body-font-size-m);
+  }
+}
+
+/* tabs span the full width above, so square off both top corners of the
+   table — the navy header connects directly to the tab row */
+.table-allowance .table-allowance-panel table {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid #ededed;
+  border-radius: 0 0 12px 12px;
+  overflow: hidden;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-s);
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+@media (width >= 900px) {
+  .table-allowance .table-allowance-panel table {
+    font-size: var(--body-font-size-m);
+  }
+}
